@@ -1,0 +1,151 @@
+\documentclass[12pt, a4paper]{article}
+
+% --- PACOTES PRINCIPAIS ---
+\usepackage[utf8]{inputenc}
+\usepackage[portuguese]{babel} % Ajustado para português
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amsfonts, amssymb}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{siunitx}
+\usepackage{hyperref}
+
+% --- CONFIGURAÇÃO DAS MARGENS (ABNT NBR 14724) ---
+\geometry{top=3cm, bottom=2cm, left=3cm, right=2cm}
+
+% --- CONFIGURAÇÕES DO SIUNITX (ISO 80000-1) ---
+\sisetup{
+  output-decimal-marker = {,},
+  separate-uncertainty = true,
+  per-mode = symbol
+}
+
+\linespread{1.5}
+
+\begin{document}
+
+% --- CABEÇALHO E CAPA ---
+\begin{center}
+    \textbf{\Large UNIVERSIDADE DE BRASÍLIA -- UnB}\\
+    \textbf{\large Faculdade do Gama -- FGA}\\
+    \vspace{0.5cm}
+    \textbf{\large Disciplina: Física 1 Experimental}\\
+    \vspace{1.5cm}
+    {\Large \textbf{RELATÓRIO DE EXPERIMENTO}}\\
+    {\large \textbf{Experimento II - Movimento Retilíneo Uniforme (MRU)}}\\
+    \vspace{1.5cm}
+\end{center}
+
+\begin{flushright}
+    \textbf{Integrantes do Grupo:}\\
+    Emanuel Matsumori Quintiliano -- Matrícula: 261040090\\
+    Felipe Wermelinger da Costa Leite -- Matrícula: 261014993\\
+    Rodrigo Silveira Pereira Costa -- Matrícula: 251027826\\
+    Yago dos Santos Rezende -- Matrícula: 241012427\\
+    \vspace{0.5cm}
+    \textbf{Professor:} Prof. Dr. Wytler C. Santos\\
+    \textbf{Data do Experimento:} 27 de setembro de 2026
+\end{flushright}
+
+\vfill
+\begin{center}
+    Brasília -- DF \\
+    2026
+\end{center}
+
+\newpage
+
+% --- OBJETIVOS ---
+\section{Objetivos}
+% TODO: Colegas, preencham/melhorem os objetivos baseando-se no roteiro.
+Este experimento visa descrever a cinemática de um movimento retilíneo e uniforme através do acompanhamento da posição e da velocidade com a evolução do tempo. Pretende-se introduzir e estudar a propagação de erros e a aplicação de métodos gráficos para a análise cinemática, utilizando um trilho de ar com atrito desprezável.
+
+% --- INTRODUÇÃO TEÓRICA ---
+\section{Introdução Teórica}
+% TODO: Colegas, expliquem a teoria do MRU (Movimento Retilíneo Uniforme) aqui. 
+A equação horária que descreve o movimento retilíneo uniforme (MRU) é dada por:
+\begin{equation}
+    x(t) = x_0 + v \cdot t
+\end{equation}
+Onde $x(t)$ representa a posição no instante $t$, $x_0$ a posição inicial e $v$ a velocidade constante do móvel. Esta secção deve também explicar como a regressão linear permite extrair os parâmetros físicos ($v$ e $x_0$) a partir dos coeficientes angular e linear do gráfico.
+
+% --- PARTE EXPERIMENTAL E DISCUSSÃO ---
+\section{Parte Experimental e Resultados}
+
+\subsection{Materiais Utilizados}
+O equipamento base utilizado consistiu num kit de trilho de ar. Os principais componentes foram:
+\begin{itemize}
+    \item 01 trilho de 120 cm;
+    \item 01 cronómetro digital multifunções com fonte DC 12 V;
+    \item 02 sensores fotoelétricos com suporte fixador (S1 e S2);
+    \item 01 eletroíman com bornes e haste;
+    \item 01 chave liga-desliga;
+    % TODO: Colegas, adicionem mais materiais relevantes se acharem necessário.
+\end{itemize}
+
+\subsection{Procedimentos}
+% TODO: Colegas, descrevam resumidamente os passos da medição (ajuste dos sensores, as massas penduradas, as repetições das contagens no cronómetro, etc).
+As medições consistiram em posicionar o primeiro sensor ($S_1$) na posição $x_0 = 0\text{ cm}$ e variar a distância do segundo sensor ($S_2$) em intervalos de $\SI{10}{\cm}$ até atingir a distância de $\SI{50}{\cm}$. O cronómetro foi accionado pela passagem do carrinho pelos sensores e, para cada deslocamento, foram efetuadas 5 medições de tempo.
+
+\subsection{Dados Experimentais}
+A Tabela~\ref{tab:dados} apresenta os valores dos intervalos de tempo medidos, o tempo médio e os respetivos erros calculados para as distâncias pré-definidas.
+
+\begin{table}[!htbp]
+\centering
+\caption{Valores experimentais para o Movimento Retilíneo Uniforme.}
+\label{tab:dados}
+\vspace{0.2cm}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lccccc}
+\toprule
+\textbf{Parâmetro} & $\Delta x_1 = \SI{10}{\cm}$ & $\Delta x_2 = \SI{20}{\cm}$ & $\Delta x_3 = \SI{30}{\cm}$ & $\Delta x_4 = \SI{40}{\cm}$ & $\Delta x_5 = \SI{50}{\cm}$ \\
+\midrule
+$\Delta t_1$ (s) & 0,237 & 0,438 & 0,690 & 0,882 & 1,255 \\
+$\Delta t_2$ (s) & 0,233 & 0,470 & 0,686 & 0,913 & 1,251 \\
+$\Delta t_3$ (s) & 0,236 & 0,464 & 0,694 & 0,900 & 1,248 \\
+$\Delta t_4$ (s) & 0,267 & 0,465 & 0,686 & 0,899 & 1,238 \\
+$\Delta t_5$ (s) & 0,265 & 0,468 & 0,702 & 0,919 & 1,236 \\
+\midrule
+\textbf{Tempo médio (s)} & 0,248 & 0,461 & 0,691 & 0,902 & 1,246 \\
+\textbf{Erro aleatório (s)} & 0,007 & 0,005 & 0,003 & 0,000 & 0,003 \\
+\textbf{Erro absoluto (s)} & 0,008 & 0,006 & 0,004 & 0,007 & 0,004 \\
+\bottomrule
+\end{tabular}%
+}
+\end{table}
+
+\subsection{Análise Gráfica e Regressão Linear}
+Para extrair a velocidade constante do movimento, procedeu-se ao ajuste linear dos dados de posição em função do tempo médio. A equação teórica da reta apresenta a forma $y = A \cdot x + B$, em que $y$ corresponde ao deslocamento ($\Delta x$) e $x$ ao tempo médio ($\Delta t$).
+
+A análise computacional obteve os seguintes coeficientes para a regressão linear:
+\begin{itemize}
+    \item \textbf{Coeficiente Angular (Declive):} $A = 40,62 \pm 2,37 \text{ cm/s}$
+    \item \textbf{Coeficiente Linear (Ordenada na origem):} $B = 1,18 \pm 1,87 \text{ cm}$
+\end{itemize}
+
+Comparando a equação da reta ($y = Ax + B$) com a equação horária da cinemática ($x = v \cdot t + x_0$), conclui-se que o coeficiente angular $A$ representa a velocidade média do móvel ($v \approx 40,62 \text{ cm/s}$) e o coeficiente linear $B$ representa a posição inicial ajustada ($x_0 \approx 1,18 \text{ cm}$). O valor de $B$ está muito próximo de zero, o que corrobora o facto de o referencial ter sido ajustado para partir de $x_0 = 0$.
+
+% TODO: Adicionar o gráfico gerado computacionalmente (substituir o nome do ficheiro)
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=0.8\textwidth]{nome_da_imagem_do_grafico.png}
+    \caption{Gráfico da regressão linear relacionando o deslocamento e o tempo.}
+    \label{fig:grafico}
+\end{figure}
+
+% --- CONCLUSÃO ---
+\section{Conclusão}
+% TODO: Colegas, redijam a conclusão final aqui. 
+% Discutam se a equação horária obtida condiz com as expectativas e se a aproximação de que v = A e x_0 = B se sustenta.
+
+% --- REFERÊNCIAS ---
+\section*{Referências}
+\begin{enumerate}
+    \item SANTOS, Wytler C. \textbf{Roteiro para o Experimento II - Movimento Retilíneo Uniforme (MRU)}. Faculdade UnB Gama.
+\end{enumerate}
+
+\end{document}
