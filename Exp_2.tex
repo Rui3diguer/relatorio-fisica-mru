@@ -40,7 +40,7 @@
     Yago dos Santos Rezende -- Matrícula: 241012427\\
     \vspace{0.5cm}
     \textbf{Professor:} Prof. Dr. Wytler C. Santos\\
-    \textbf{Data do Experimento:} 15 de setembro de 2026
+    \textbf{Data do Experimento:} 27 de setembro de 2026
 \end{flushright}
 
 \vfill
@@ -67,20 +67,27 @@ Onde $x(t)$ representa a posição do móvel no instante $t$, $x_0$ é a posiç�
 
 Experimentalmente, para que um corpo descreva um MRU com precisão, é necessário que as forças dissipativas sobre ele sejam minimizadas. Por isso, utiliza-se um trilho de ar, cujo atrito mecânico é muito pequeno e pode ser considerado desprezível na análise do movimento.
 
-\subsection{Tratamento de Incertezas Experimentais}
+\subsection{Tratamento e Propagação de Incertezas Experimentais}
 Para reduzir o impacto das variações durante a coleta de dados, o tempo de deslocamento do carrinho é medido $n$ vezes para a mesma distância. O valor adotado para o tempo é a média aritmética das medições:
 \begin{equation}
     \bar{t} = \frac{1}{n} \sum_{i=1}^{n} t_i
 \end{equation}
 
-A incerteza dessa medida é determinada combinando-se o erro aleatório com a resolução do instrumento. O erro aleatório ($\sigma_m$) é calculado pelo desvio padrão da média:
+A incerteza dessa medida temporal é determinada combinando-se o erro aleatório com a resolução do instrumento. O erro aleatório ($\sigma_m$) é calculado pelo desvio padrão da média:
 \begin{equation}
     \sigma_m = \sqrt{\frac{1}{n(n-1)}\sum_{i=1}^{n}(t_i - \bar{t})^2}
 \end{equation}
 
-O erro absoluto final (ou incerteza padrão combinada, $u_c$) para o tempo é calculado de acordo com o modelo adotado para este estudo, correspondendo à soma linear do erro aleatório com a incerteza instrumental do cronômetro ($\Delta_{\text{inst}}$):
+O erro absoluto final (ou incerteza padrão combinada, $u_c$) para o tempo é calculado de acordo com o modelo adotado para este estudo, correspondendo à soma linear do erro aleatório com a incerteza instrumental do aparelho ($\Delta_{\text{inst}}$):
 \begin{equation}
     u_c(t) = {\sigma_m + \Delta_{\text{inst}}}
+\end{equation}
+
+Vale ressaltar que a definição da incerteza instrumental difere conforme a natureza do equipamento: para aparelhos digitais (como o cronômetro), adota-se a sua própria resolução; para instrumentos analógicos (como a régua milimetrada do trilho), adota-se a metade da sua menor divisão de escala.
+
+Para grandezas derivadas, como a velocidade média pontual calculada através do quociente $v = \frac{\Delta x}{\Delta t}$, utiliza-se o formalismo da propagação de incertezas. A incerteza combinada da velocidade ($u_c(v)$) é obtida através da soma em quadratura das incertezas relativas do deslocamento e do tempo:
+\begin{equation}
+    u_c(v) = |v| \cdot \sqrt{\left(\frac{u_c(\Delta x)}{\Delta x}\right)^2 + \left(\frac{u_c(\Delta t)}{\Delta t}\right)^2}
 \end{equation}
 
 \subsection{Métodos para Determinação da Velocidade}
@@ -94,15 +101,21 @@ Consiste no cálculo isolado da velocidade para cada subintervalo de deslocament
 Esta abordagem avalia o movimento localmente, mas é muito sensível às flutuações e atrasos dos sensores em cada medição consecutiva.
 
 \subsubsection*{2. Regressão Linear (Mínimos Quadrados)}
-Para obter um valor estatisticamente mais confiável, utiliza-se o conjunto total de dados do experimento. Ajustando os pontos experimentais de posição e tempo médio a uma função linear genérica $y = A \cdot x + B$, e comparando-a com a equação horária teórica do MRU ($x = x_0 + v \cdot t$), estabelece-se a seguinte correspondência:
+Para obter um valor estatisticamente mais confiável, utiliza-se o conjunto total de dados do experimento, ajustando os pares ordenados de tempo e posição $(t_i, x_i)$ a uma reta $x = A \cdot t + B$. Os coeficientes angular ($A$) e linear ($B$) são determinados analiticamente pelas equações exatas do método dos Mínimos Quadrados para $N$ amostras:
+\begin{equation}
+    A = \frac{N \sum (t_i \cdot x_i) - \left(\sum t_i\right) \left(\sum x_i\right)}{N \sum t_i^2 - \left(\sum t_i\right)^2}
+\end{equation}
+\begin{equation}
+    B = \frac{\sum x_i - A \sum t_i}{N}
+\end{equation}
+
+Comparando a equação da reta obtida com a equação horária teórica do MRU ($x = v \cdot t + x_0$), estabelece-se a seguinte correspondência física direta:
 \begin{equation}
     \begin{cases} 
-      A = v \text{ (Velocidade média do sistema)} \\
+      A = v \text{ (Velocidade constante do sistema)} \\
       B = x_0 \text{ (Posição inicial)} \simeq 0
    \end{cases}
 \end{equation}
-
-Esse método compensa os erros aleatórios individuais de cada trecho, fornecendo a "melhor reta" matemática que representa a velocidade global constante do sistema.
 
 % --- PARTE EXPERIMENTAL E DISCUSSÃO ---
 \section{Parte Experimental e Resultados}
@@ -178,7 +191,9 @@ $t_5$ (s) & 0,265 & 0,468 & 0,702 & 0,919 & 1,236 \\
 \end{table}
 
 \subsection{Demonstração Analítica dos Cálculos}
-Para comprovar a aplicação dos conceitos teóricos, são demonstradas a seguir as substituições matemáticas para o tempo médio e incerteza (considerando a resolução do cronômetro $\Delta_{\text{inst}} = 0,001\text{ s}$), seguidas do cálculo da velocidade local para cada incremento fracionado de $10\text{ cm}$ ($\Delta x_k = x_k - x_{k-1}$ e $\Delta t_k = \bar{t}_k - \bar{t}_{k-1}$). Assume-se que na origem $x_0 = 0$ e $t_0 = 0$.
+Para comprovar a aplicação dos conceitos teóricos, são demonstradas a seguir as substituições matemáticas para o tempo médio e incerteza (considerando a resolução do cronômetro $\Delta_{\text{inst}} = 0,001\text{ s}$), seguidas do cálculo da velocidade local para cada incremento. 
+
+Adicionalmente, exemplifica-se a propagação de erro para a velocidade do primeiro intervalo $\bar{v}_1$. Como a régua do trilho é um instrumento analógico com menor divisão de $0,1\text{ cm}$ ($1\text{ mm}$), sua incerteza instrumental é de $u_c(\Delta x) = 0,05\text{ cm}$.
 
 \vspace{0.3cm}
 \noindent \textbf{Intervalo 1 ($0 \rightarrow 10\text{ cm}$):}
@@ -188,6 +203,10 @@ Para comprovar a aplicação dos conceitos teóricos, são demonstradas a seguir
     u_c(t_1) &= 0,007 + 0,001 = 0,008\text{ s} \\
     \bar{v}_1 &= \frac{10 - 0}{0,248 - 0} \approx 40,32\text{ cm/s}
 \end{align*}
+Aplicando a propagação de erros na velocidade do trecho 1:
+\begin{equation*}
+    u_c(v_1) = 40,32 \cdot \sqrt{\left(\frac{0,05}{10}\right)^2 + \left(\frac{0,008}{0,248}\right)^2} \approx 40,32 \cdot 0,0326 \approx 1,32\text{ cm/s}
+\end{equation*}
 
 \noindent \textbf{Intervalo 2 ($10 \rightarrow 20\text{ cm}$):}
 \begin{align*}
@@ -224,7 +243,7 @@ Para comprovar a aplicação dos conceitos teóricos, são demonstradas a seguir
 \subsection{Análise Gráfica e Regressão Linear}
 Para extrair a velocidade do movimento de forma a mitigar as distorções pontuais observadas nos intervalos (como a queda abrupta no último trecho para $29,07\text{ cm/s}$), utilizou-se o método da regressão linear, relacionando as posições com seus respectivos tempos acumulados. A equação teórica da reta gerada é $x = A \cdot t + B$.
 
-Ao processar computacionalmente os dados, a regressão resultou nos seguintes coeficientes:
+Ao processar computacionalmente os dados nas equações dos Mínimos Quadrados, a regressão resultou nos seguintes coeficientes:
 \begin{itemize}
     \item \textbf{Coeficiente Angular (Declive):} $A = 40,62 \pm 2,37 \text{ cm/s}$
     \item \textbf{Coeficiente Linear (Ordenada na origem):} $B = 1,18 \pm 1,87 \text{ cm}$
