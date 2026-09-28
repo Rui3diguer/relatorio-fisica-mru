@@ -2,7 +2,7 @@
 
 % --- PACOTES PRINCIPAIS ---
 \usepackage[utf8]{inputenc}
-\usepackage[portuguese]{babel} % Ajustado para português
+\usepackage[brazil]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath, amsfonts, amssymb}
 \usepackage{geometry}
@@ -11,18 +11,10 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{float}
-\usepackage{siunitx}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 % --- CONFIGURAÇÃO DAS MARGENS (ABNT NBR 14724) ---
 \geometry{top=3cm, bottom=2cm, left=3cm, right=2cm}
-
-% --- CONFIGURAÇÕES DO SIUNITX (ISO 80000-1) ---
-\sisetup{
-  output-decimal-marker = {,},
-  separate-uncertainty = true,
-  per-mode = symbol
-}
 
 \linespread{1.5}
 
@@ -61,38 +53,105 @@
 
 % --- OBJETIVOS ---
 \section{Objetivos}
-% TODO: Colegas, preencham/melhorem os objetivos baseando-se no roteiro.
-Este experimento visa descrever a cinemática de um movimento retilíneo e uniforme através do acompanhamento da posição e da velocidade com a evolução do tempo. Pretende-se introduzir e estudar a propagação de erros e a aplicação de métodos gráficos para a análise cinemática, utilizando um trilho de ar com atrito desprezável.
+Este experimento tem como objetivo descrever a cinemática de um movimento retilíneo e uniforme por meio da análise da posição e da velocidade em função do tempo. Busca-se também aplicar os conceitos de propagação de incertezas e utilizar métodos gráficos para a análise cinemática, empregando um trilho de ar com atrito desprezível.
 
 % --- INTRODUÇÃO TEÓRICA ---
 \section{Introdução Teórica}
-% TODO: Colegas, expliquem a teoria do MRU (Movimento Retilíneo Uniforme) aqui. 
-A equação horária que descreve o movimento retilíneo uniforme (MRU) é dada por:
+
+\subsection{O Movimento Retilíneo Uniforme (MRU)}
+O Movimento Retilíneo Uniforme (MRU) caracteriza-se pelo deslocamento de um corpo em trajetória retilínea com velocidade constante. Dessa forma, a aceleração do sistema é nula. A cinemática deste movimento é descrita pela equação horária da posição:
 \begin{equation}
     x(t) = x_0 + v \cdot t
 \end{equation}
-Onde $x(t)$ representa a posição no instante $t$, $x_0$ a posição inicial e $v$ a velocidade constante do móvel. Esta secção deve também explicar como a regressão linear permite extrair os parâmetros físicos ($v$ e $x_0$) a partir dos coeficientes angular e linear do gráfico.
+Onde $x(t)$ representa a posição do móvel no instante $t$, $x_0$ é a posição inicial e $v$ é a velocidade constante. 
+
+Experimentalmente, para que um corpo descreva um MRU com precisão, é necessário que as forças dissipativas sobre ele sejam minimizadas. Por isso, utiliza-se um trilho de ar, cujo atrito mecânico é muito pequeno e pode ser considerado desprezível na análise do movimento.
+
+\subsection{Tratamento de Incertezas Experimentais}
+Para reduzir o impacto das variações durante a coleta de dados, o tempo de deslocamento do carrinho é medido $n$ vezes para a mesma distância. O valor adotado para o tempo é a média aritmética das medições:
+\begin{equation}
+    \bar{t} = \frac{1}{n} \sum_{i=1}^{n} t_i
+\end{equation}
+
+A incerteza dessa medida é determinada combinando-se o erro aleatório com a resolução do instrumento. O erro aleatório ($\sigma_m$) é calculado pelo desvio padrão da média:
+\begin{equation}
+    \sigma_m = \sqrt{\frac{1}{n(n-1)}\sum_{i=1}^{n}(t_i - \bar{t})^2}
+\end{equation}
+
+O erro absoluto final (ou incerteza padrão combinada, $u_c$) para o tempo é calculado de acordo com o modelo adotado para este estudo, correspondendo à soma linear do erro aleatório com a incerteza instrumental do cronômetro ($\Delta_{\text{inst}}$):
+\begin{equation}
+    u_c(t) = {\sigma_m + \Delta_{\text{inst}}}
+\end{equation}
+
+\subsection{Métodos para Determinação da Velocidade}
+A análise cinemática para obter a velocidade do Movimento Retilíneo Uniforme pode ser feita por duas abordagens:
+
+\subsubsection*{1. Velocidade Média Pontual (Intervalos Consecutivos)}
+Consiste no cálculo isolado da velocidade para cada subintervalo de deslocamento ($k$), subtraindo a posição e o tempo do ponto anterior para obter as variações $\Delta x$ e $\Delta t$:
+\begin{equation}
+    \bar{v}_k = \frac{x_k - x_{k-1}}{\bar{t}_k - \bar{t}_{k-1}}
+\end{equation}
+Esta abordagem avalia o movimento localmente, mas é muito sensível às flutuações e atrasos dos sensores em cada medição consecutiva.
+
+\subsubsection*{2. Regressão Linear (Mínimos Quadrados)}
+Para obter um valor estatisticamente mais confiável, utiliza-se o conjunto total de dados do experimento. Ajustando os pontos experimentais de posição e tempo médio a uma função linear genérica $y = A \cdot x + B$, e comparando-a com a equação horária teórica do MRU ($x = x_0 + v \cdot t$), estabelece-se a seguinte correspondência:
+\begin{equation}
+    \begin{cases} 
+      A = v \text{ (Velocidade média do sistema)} \\
+      B = x_0 \text{ (Posição inicial)} \simeq 0
+   \end{cases}
+\end{equation}
+
+Esse método compensa os erros aleatórios individuais de cada trecho, fornecendo a "melhor reta" matemática que representa a velocidade global constante do sistema.
 
 % --- PARTE EXPERIMENTAL E DISCUSSÃO ---
 \section{Parte Experimental e Resultados}
 
-\subsection{Materiais Utilizados}
-O equipamento base utilizado consistiu num kit de trilho de ar. Os principais componentes foram:
+\subsection{Material a ser utilizado}
 \begin{itemize}
-    \item 01 trilho de 120 cm;
-    \item 01 cronómetro digital multifunções com fonte DC 12 V;
+    \item 01 trilho 120 cm;
+    \item 01 cronômetro digital multifunções com fonte DC 12 V;
     \item 02 sensores fotoelétricos com suporte fixador (S1 e S2);
-    \item 01 eletroíman com bornes e haste;
+    \item 01 eletroímã com bornes e haste;
+    \item 01 fixador de eletroímã com manípulo;
     \item 01 chave liga-desliga;
-    % TODO: Colegas, adicionem mais materiais relevantes se acharem necessário.
+    \item 01 Y de final de curso com roldana raiada;
+    \item 01 suporte para massas aferidas 19 g (aproximada);
+    \item 01 massa aferida 10 g com furo central de 2,5 mm de diâmetro;
+    \item 02 massas aferidas 20 g com furo central de 2,5 mm diâmetro;
+    \item 01 cabo de ligação conjugado;
+    \item 01 unidade de fluxo de ar;
+    \item 01 cabo de força tripolar 1,5 m;
+    \item 01 mangueira aspirador 1,5 polegadas;
+    \item 01 pino para carrinho para fixá-lo no eletroímã;
+    \item 01 carrinho para trilho cor preta;
+    \item 01 pino para carrinho para interrupção de sensor;
+    \item 03 porcas borboletas;
+    \item 07 arruelas lisas;
+    \item 04 manípulos de latão 13 mm;
+    \item 01 pino para carrinho com gancho.
 \end{itemize}
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{bancada.jpeg}
+    \caption{Bancada para o experimento de MRU.}
+    \label{fig:montagem1}
+\end{figure}
+
 \subsection{Procedimentos}
-% TODO: Colegas, descrevam resumidamente os passos da medição (ajuste dos sensores, as massas penduradas, as repetições das contagens no cronómetro, etc).
-As medições consistiram em posicionar o primeiro sensor ($S_1$) na posição $x_0 = 0\text{ cm}$ e variar a distância do segundo sensor ($S_2$) em intervalos de $\SI{10}{\cm}$ até atingir a distância de $\SI{50}{\cm}$. O cronómetro foi accionado pela passagem do carrinho pelos sensores e, para cada deslocamento, foram efetuadas 5 medições de tempo.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{esquema.jpeg}
+    \caption{Esquema de ligação de medida de tempo: cronômetro, sensores e chave liga/desliga.}
+    \label{fig:montagem2}
+\end{figure}
+
+As medições consistiram em posicionar o primeiro sensor ($S_1$) na posição de referência $x_0 = 0\text{ cm}$ (instante de partida $t_0 = 0\text{ s}$) e variar a distância do segundo sensor ($S_2$) em intervalos de $10\text{ cm}$ até atingir a marca de $50\text{ cm}$. O cronômetro foi acionado pela passagem do carrinho pelos sensores e, para cada marco de distância, foram efetuadas 5 medições de tempo.
 
 \subsection{Dados Experimentais}
-A Tabela~\ref{tab:dados} apresenta os valores dos intervalos de tempo medidos, o tempo médio e os respetivos erros calculados para as distâncias pré-definidas.
+A Tabela~\ref{tab:dados} apresenta as leituras do tempo decorrido desde a origem para cada marca de posição, bem como o tempo médio calculado e suas respectivas incertezas.
 
 \begin{table}[!htbp]
 \centering
@@ -102,45 +161,105 @@ A Tabela~\ref{tab:dados} apresenta os valores dos intervalos de tempo medidos, o
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
-\textbf{Parâmetro} & $\Delta x_1 = \SI{10}{\cm}$ & $\Delta x_2 = \SI{20}{\cm}$ & $\Delta x_3 = \SI{30}{\cm}$ & $\Delta x_4 = \SI{40}{\cm}$ & $\Delta x_5 = \SI{50}{\cm}$ \\
+\textbf{Parâmetro} & $x_1 = 10\text{ cm}$ & $x_2 = 20\text{ cm}$ & $x_3 = 30\text{ cm}$ & $x_4 = 40\text{ cm}$ & $x_5 = 50\text{ cm}$ \\
 \midrule
-$\Delta t_1$ (s) & 0,237 & 0,438 & 0,690 & 0,882 & 1,255 \\
-$\Delta t_2$ (s) & 0,233 & 0,470 & 0,686 & 0,913 & 1,251 \\
-$\Delta t_3$ (s) & 0,236 & 0,464 & 0,694 & 0,900 & 1,248 \\
-$\Delta t_4$ (s) & 0,267 & 0,465 & 0,686 & 0,899 & 1,238 \\
-$\Delta t_5$ (s) & 0,265 & 0,468 & 0,702 & 0,919 & 1,236 \\
+$t_1$ (s) & 0,237 & 0,438 & 0,690 & 0,882 & 1,255 \\
+$t_2$ (s) & 0,233 & 0,470 & 0,686 & 0,913 & 1,251 \\
+$t_3$ (s) & 0,236 & 0,464 & 0,694 & 0,900 & 1,248 \\
+$t_4$ (s) & 0,267 & 0,465 & 0,686 & 0,899 & 1,238 \\
+$t_5$ (s) & 0,265 & 0,468 & 0,702 & 0,919 & 1,236 \\
 \midrule
 \textbf{Tempo médio (s)} & 0,248 & 0,461 & 0,691 & 0,902 & 1,246 \\
-\textbf{Erro aleatório (s)} & 0,007 & 0,005 & 0,003 & 0,000 & 0,003 \\
+\textbf{Erro aleatório (s)} & 0,007 & 0,005 & 0,003 & 0,006 & 0,003 \\
 \textbf{Erro absoluto (s)} & 0,008 & 0,006 & 0,004 & 0,007 & 0,004 \\
 \bottomrule
 \end{tabular}%
 }
 \end{table}
 
-\subsection{Análise Gráfica e Regressão Linear}
-Para extrair a velocidade constante do movimento, procedeu-se ao ajuste linear dos dados de posição em função do tempo médio. A equação teórica da reta apresenta a forma $y = A \cdot x + B$, em que $y$ corresponde ao deslocamento ($\Delta x$) e $x$ ao tempo médio ($\Delta t$).
+\subsection{Demonstração Analítica dos Cálculos}
+Para comprovar a aplicação dos conceitos teóricos, são demonstradas a seguir as substituições matemáticas para o tempo médio e incerteza (considerando a resolução do cronômetro $\Delta_{\text{inst}} = 0,001\text{ s}$), seguidas do cálculo da velocidade local para cada incremento fracionado de $10\text{ cm}$ ($\Delta x_k = x_k - x_{k-1}$ e $\Delta t_k = \bar{t}_k - \bar{t}_{k-1}$). Assume-se que na origem $x_0 = 0$ e $t_0 = 0$.
 
-A análise computacional obteve os seguintes coeficientes para a regressão linear:
+\vspace{0.3cm}
+\noindent \textbf{Intervalo 1 ($0 \rightarrow 10\text{ cm}$):}
+\begin{align*}
+    \bar{t}_1 &= \frac{0,237 + 0,233 + 0,236 + 0,267 + 0,265}{5} = 0,248\text{ s} \\
+    \sigma_{m1} &= \sqrt{\frac{(0,237-0,248)^2 + \dots + (0,265-0,248)^2}{20}} \approx 0,007\text{ s} \\
+    u_c(t_1) &= 0,007 + 0,001 = 0,008\text{ s} \\
+    \bar{v}_1 &= \frac{10 - 0}{0,248 - 0} \approx 40,32\text{ cm/s}
+\end{align*}
+
+\noindent \textbf{Intervalo 2 ($10 \rightarrow 20\text{ cm}$):}
+\begin{align*}
+    \bar{t}_2 &= \frac{0,438 + 0,470 + 0,464 + 0,465 + 0,468}{5} = 0,461\text{ s} \\
+    \sigma_{m2} &= \sqrt{\frac{(0,438-0,461)^2 + \dots + (0,468-0,461)^2}{20}} \approx 0,005\text{ s} \\
+    u_c(t_2) &= 0,005 + 0,001 = 0,006\text{ s} \\
+    \bar{v}_2 &= \frac{20 - 10}{0,461 - 0,248} = \frac{10}{0,213} \approx 46,95\text{ cm/s}
+\end{align*}
+
+\noindent \textbf{Intervalo 3 ($20 \rightarrow 30\text{ cm}$):}
+\begin{align*}
+    \bar{t}_3 &= \frac{0,690 + 0,686 + 0,694 + 0,686 + 0,702}{5} = 0,691\text{ s} \\
+    \sigma_{m3} &= \sqrt{\frac{(0,690-0,691)^2 + \dots + (0,702-0,691)^2}{20}} \approx 0,003\text{ s} \\
+    u_c(t_3) &= 0,003 + 0,001 = 0,004\text{ s} \\
+    \bar{v}_3 &= \frac{30 - 20}{0,691 - 0,461} = \frac{10}{0,230} \approx 43,48\text{ cm/s}
+\end{align*}
+
+\noindent \textbf{Intervalo 4 ($30 \rightarrow 40\text{ cm}$):}
+\begin{align*}
+    \bar{t}_4 &= \frac{0,882 + 0,913 + 0,900 + 0,899 + 0,919}{5} = 0,902\text{ s} \\
+    \sigma_{m4} &= \sqrt{\frac{(0,882-0,902)^2 + \dots + (0,919-0,902)^2}{20}} \approx 0,006\text{ s} \\
+    u_c(t_4) &= 0,006 + 0,001 = 0,007\text{ s} \\
+    \bar{v}_4 &= \frac{40 - 30}{0,902 - 0,691} = \frac{10}{0,211} \approx 47,39\text{ cm/s}
+\end{align*}
+
+\noindent \textbf{Intervalo 5 ($40 \rightarrow 50\text{ cm}$):}
+\begin{align*}
+    \bar{t}_5 &= \frac{1,255 + 1,251 + 1,248 + 1,238 + 1,236}{5} \approx 1,246\text{ s} \\
+    \sigma_{m5} &= \sqrt{\frac{(1,255-1,246)^2 + \dots + (1,236-1,246)^2}{20}} \approx 0,003\text{ s} \\
+    u_c(t_5) &= 0,003 + 0,001 = 0,004\text{ s} \\
+    \bar{v}_5 &= \frac{50 - 40}{1,246 - 0,902} = \frac{10}{0,344} \approx 29,07\text{ cm/s}
+\end{align*}
+
+\subsection{Análise Gráfica e Regressão Linear}
+Para extrair a velocidade do movimento de forma a mitigar as distorções pontuais observadas nos intervalos (como a queda abrupta no último trecho para $29,07\text{ cm/s}$), utilizou-se o método da regressão linear, relacionando as posições com seus respectivos tempos acumulados. A equação teórica da reta gerada é $x = A \cdot t + B$.
+
+Ao processar computacionalmente os dados, a regressão resultou nos seguintes coeficientes:
 \begin{itemize}
     \item \textbf{Coeficiente Angular (Declive):} $A = 40,62 \pm 2,37 \text{ cm/s}$
     \item \textbf{Coeficiente Linear (Ordenada na origem):} $B = 1,18 \pm 1,87 \text{ cm}$
 \end{itemize}
 
-Comparando a equação da reta ($y = Ax + B$) com a equação horária da cinemática ($x = v \cdot t + x_0$), conclui-se que o coeficiente angular $A$ representa a velocidade média do móvel ($v \approx 40,62 \text{ cm/s}$) e o coeficiente linear $B$ representa a posição inicial ajustada ($x_0 \approx 1,18 \text{ cm}$). O valor de $B$ está muito próximo de zero, o que corrobora o facto de o referencial ter sido ajustado para partir de $x_0 = 0$.
-
-% TODO: Adicionar o gráfico gerado computacionalmente (substituir o nome do ficheiro)
+% TODO: Quando o gráfico for gerado e salvo na pasta, remova o % da linha abaixo e coloque o nome do arquivo.
 \begin{figure}[H]
     \centering
-    %\includegraphics[width=0.8\textwidth]{nome_da_imagem_do_grafico.png}
-    \caption{Gráfico da regressão linear relacionando o deslocamento e o tempo.}
+    \includegraphics[width=0.8\textwidth]{grafico.jpeg}
+    \caption{Gráfico da regressão linear relacionando a posição e o tempo de percurso.}
     \label{fig:grafico}
 \end{figure}
 
+\subsubsection*{Validação Analítica: Regressão vs. Razão $\frac{\Delta x}{\Delta t}$}
+Para avaliar a consistência da regressão, foi realizada uma comparação com as análises pontuais. A média aritmética simples das cinco velocidades pontuais nos intervalos fornece:
+\begin{equation}
+    v_{\text{média local}} = \frac{40,32 + 46,95 + 43,48 + 47,39 + 29,07}{5} \approx 41,44 \text{ cm/s}
+\end{equation}
+
+Calculando também a velocidade média geral unindo apenas os extremos do experimento ($v = \frac{x_5 - x_0}{t_5 - t_0}$):
+\begin{equation}
+    v_{\text{extremos}} = \frac{50 - 0}{1,246 - 0} \approx 40,13 \text{ cm/s}
+\end{equation}
+
+Esta comparação demonstra que os valores de velocidade obtidos por diferentes métodos convergem para um resultado comum, reforçando a validade física da análise.
+
 % --- CONCLUSÃO ---
 \section{Conclusão}
-% TODO: Colegas, redijam a conclusão final aqui. 
-% Discutam se a equação horária obtida condiz com as expectativas e se a aproximação de que v = A e x_0 = B se sustenta.
+O experimento cumpriu plenamente seus objetivos ao descrever com êxito a cinemática de um corpo em Movimento Retilíneo Uniforme. A análise do gráfico de posição em função do tempo resultou em um comportamento linear claro, cuja correspondência com a equação horária da cinemática ($x = v \cdot t + x_0$) permitiu validar as propriedades do MRU no trilho de ar.
+
+Adicionalmente, o coeficiente linear da regressão ($B \approx 1,18\text{ cm}$) resultou em um valor muito próximo de zero, o que atesta a precisão da calibragem inicial do referencial de partida.
+
+No que tange aos métodos de obtenção da velocidade, a comparação entre as abordagens evidenciou a superioridade da regressão linear perante a análise de trechos consecutivos. Enquanto as velocidades calculadas ponto a ponto apresentaram oscilações abruptas devidas às incertezas instrumentais e de acionamento dos sensores (variando de $29,07$ a $47,39\text{ cm/s}$), o valor da regressão linear ($v = 40,62 \pm 2,37 \text{ cm/s}$) funcionou como um estabilizador estatístico preciso. Ele atuou como um intermédio altamente confiável entre as variações locais e a média bruta dos extremos, entregando a tendência mais fidedigna e livre das oscilações individuais de medição. 
+
+Fica demonstrado, portanto, que a aplicação do método dos Mínimos Quadrados é a ferramenta mais robusta e adequada para o tratamento de dados e extração de parâmetros físicos em experimentos desta natureza.
 
 % --- REFERÊNCIAS ---
 \section*{Referências}
