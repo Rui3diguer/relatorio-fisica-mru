@@ -1,7 +1,7 @@
 # Fdb version 4
-["pdflatex"] 1790606540.71265 "/home/rodrigo/Documentos/APC/Nuevos/Relatorio/Exp_2.tex" "Exp_2.pdf" "Exp_2" 1790606543.12407 0
+["pdflatex"] 1790606950.06074 "/home/rodrigo/Documentos/APC/Nuevos/Relatorio/Exp_2.tex" "Exp_2.pdf" "Exp_2" 1790606953.35971 0
   "/etc/texmf/web2c/texmf.cnf" 1790534033.39196 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/rodrigo/Documentos/APC/Nuevos/Relatorio/Exp_2.tex" 1790606537.04486 14373 a52cbd2e5d2a0747e0b6fedf056a7964 ""
+  "/home/rodrigo/Documentos/APC/Nuevos/Relatorio/Exp_2.tex" 1790606948.36512 14373 730154ded208b8ae47c11101d054e108 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0600.tfm" 1136768653 3584 ad9fcbc26a2a7bccd6d08b0a5792fbe0 ""
   "/usr/share/texlive/texmf-dist/fonts/tfm/jknappen/ec/ecbx0800.tfm" 1136768653 3584 269b66e921ba58750c12f7f1c8ea3ebd ""
@@ -110,9 +110,9 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1707919699 40399 f2c302f7d2af602abb742093540a5834 ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1790534109.55744 5472669 54eaf61a88b6b7896ebd0dac973cb29c ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1790534263 8214235 22812a189e6315166d2d933d5b507f4a ""
-  "Exp_2.aux" 1790606542.80608 3080 80af94795dd24ed2b9fb77960acb6db9 "pdflatex"
-  "Exp_2.out" 1790606542.81008 2285 0ebfa8fe2a8de32aa5ec1356c395c79d "pdflatex"
-  "Exp_2.tex" 1790606537.04486 14373 a52cbd2e5d2a0747e0b6fedf056a7964 ""
+  "Exp_2.aux" 1790606953.00823 3080 80af94795dd24ed2b9fb77960acb6db9 "pdflatex"
+  "Exp_2.out" 1790606953.01323 2285 0ebfa8fe2a8de32aa5ec1356c395c79d "pdflatex"
+  "Exp_2.tex" 1790606948.36512 14373 730154ded208b8ae47c11101d054e108 ""
   "bancada.jpeg" 1790602981.62849 157158 c76ea6c5779ac53464ca1186c9f3876c ""
   "esquema.jpeg" 1790603039.69974 124240 22b43c6a0a4a5d00a3cfe6a08e4533a2 ""
   "grafico.jpeg" 1790543264.80897 29670 4fd6460003e2e0fdd1eda0a8c48b3607 ""
