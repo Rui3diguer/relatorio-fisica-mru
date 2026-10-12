@@ -2,7 +2,7 @@
 
 % --- PACOTES PRINCIPAIS ---
 \usepackage[utf8]{inputenc}
-\usepackage[brazil]{babel}
+\usepackage[portuguese]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{amsmath, amsfonts, amssymb}
 \usepackage{geometry}
@@ -35,7 +35,7 @@
 \end{center}
 
 \begin{flushright}
-    \textbf{Equipa de Trabalho:}\\
+    \textbf{Equipe de Trabalho:}\\
     Emanuel Matsumori Quintiliano -- Matrícula: 261040090\\
     Felipe Wermelinger da Costa Leite -- Matrícula: 261014993\\
     Rodrigo Silveira Pereira Costa -- Matrícula: 251027826\\
@@ -54,74 +54,195 @@
 \newpage
 
 % ==========================================
-% 1. INTRODUÇÃO
+% 1. INTRODUÇÃO TEÓRICA
 % ==========================================
-\section{Introdução}
-% TODO: Inserir a introdução teórica do experimento aqui.
+\section{Introdução Teórica}
+O Movimento Retilíneo Uniformemente Variado (MRUV) prossegue com as análises de métodos gráficos utilizando regressões lineares e quadráticas. Este movimento é caracterizado por uma aceleração constante, resultando numa variação linear da velocidade ao longo do tempo. O objetivo central deste experimento é descrever a cinemática de um carrinho num trilho de ar com atrito desprezível e calcular as acelerações médias e pontuais.
+
+Considerando que o móvel parte do repouso ($v_0 = 0$) desde a origem ($x_0 = 0$), a equação horária da posição reduz-se a:
+\begin{equation}
+    x(t) = \frac{a \cdot t^2}{2}
+\end{equation}
+
+Ao isolar a aceleração, obtém-se o valor experimental para cada deslocamento $k$:
+\begin{equation}
+    a_k = \frac{2\Delta x_k}{\Delta t_k^2}
+\end{equation}
+
+Os comportamentos da posição e da velocidade podem ser visualizados em gráficos. O método de análise gráfica consiste em correlacionar variáveis, extrair as equações e atribuir um significado físico aos coeficientes angulares das regressões obtidas, comparando a previsão teórica com o resultado do sistema físico (medido no sistema CGS: centímetros e segundos).
 
 % ==========================================
 % 2. METODOLOGIA
 % ==========================================
-\section{Metodologia}
+\section{Parte Experimental}
 
-\subsection{Material Utilizado}
-% TODO: Listar os materiais utilizados.
+\subsection{Material a ser Utilizado}
+O ensaio exigiu a montagem de um kit de cinemática, composto pelos seguintes elementos:
+\begin{itemize}
+    \item Bancada com trilho de ar (120 cm) acoplada a uma unidade de fluxo de ar (compressor);
+    \item Cronômetro digital multifunções (fonte DC 12 V);
+    \item Sensores fotoelétricos com suporte fixador ($S_1$ e $S_2$);
+    \item Eletroímã e chave liga-desliga;
+    \item Carrinho para o trilho, régua milimetrada e conjunto de massas.
+\end{itemize}
 
-\subsection{Procedimento Experimental}
-% TODO: Descrever o procedimento adotado.
+O diagrama reduzido desta montagem experimental é apresentado na Figura \ref{fig:esquema}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{pao.jpeg}
+    \caption{Esquema do trilho de ar.}
+    \label{fig:esquema}
+\end{figure}
+
+\subsection{Execução do Experimento}
+O acionamento do cronômetro, configurado na função F2, ocorreu em simultâneo com a libertação do carrinho retido pelo eletroímã (chave liga-desliga). A aceleração do carrinho foi mantida por uma massa gravitacional de aproximadamente 40 g suspensa na extremidade do trilho.
+
+O sensor $S_1$ foi posicionado na referência inicial ($x_0 = 0\text{ cm}$). O sensor $S_2$ foi variado em incrementos de 10 cm, desde a marca de 10 cm até aos 50 cm. Para cada marco de distância, foram realizadas cinco (5) medições do intervalo de tempo. Para todas as tomadas, garantiu-se que o móvel partia estritamente do repouso, sob a ação constante do peso tracionador.
 
 % ==========================================
 % 3. RESULTADOS E DISCUSSÃO
 % ==========================================
 \section{Resultados e Discussão}
 
-\subsection{Dados Coletados}
-% TODO: Adicionar o texto explicativo sobre a tabela.
+\subsection{Dados Coletados e Cálculos}
+A Tabela \ref{tab:mruv} apresenta os intervalos de tempo, o tempo médio e os erros avaliados. A velocidade instantânea ($v_{\text{inst}}$) foi obtida através da relação $v_k = 2\bar{v}_k$, onde $\bar{v}_k = \Delta x_k / \Delta \bar{t}_k$, assumindo a evolução aritmética desde o repouso. 
 
 \begin{table}[!htbp]
 \centering
-\caption{Valores experimentais, velocidades e acelerações para o MRUV.}
+\caption{Valores experimentais e resultados cinemáticos com as respectivas incertezas propagadas.}
 \label{tab:mruv}
 \vspace{0.2cm}
 \resizebox{\textwidth}{!}{%
 \begin{tabular}{lccccc}
 \toprule
-\textbf{Parâmetro} & $x_1 = 10\text{ cm}$ & $x_2 = 20\text{ cm}$ & $x_3 = 30\text{ cm}$ & $x_4 = 40\text{ cm}$ & $x_5 = 50\text{ cm}$ \\
+\textbf{Parâmetro} & $\Delta x_1 = 10\text{ cm}$ & $\Delta x_2 = 20\text{ cm}$ & $\Delta x_3 = 30\text{ cm}$ & $\Delta x_4 = 40\text{ cm}$ & $\Delta x_5 = 50\text{ cm}$ \\
 \midrule
-$t_1$ (s) & - & - & - & - & - \\
-$t_2$ (s) & - & - & - & - & - \\
-$t_3$ (s) & - & - & - & - & - \\
-$t_4$ (s) & - & - & - & - & - \\
-$t_5$ (s) & - & - & - & - & - \\
+$\Delta t_1$ (s) & 0,364 & 0,505 & 0,626 & 0,722 & 0,807 \\
+$\Delta t_2$ (s) & 0,363 & 0,507 & 0,619 & 0,713 & 0,807 \\
+$\Delta t_3$ (s) & 0,366 & 0,508 & 0,625 & 0,719 & 0,805 \\
+$\Delta t_4$ (s) & 0,364 & 0,512 & 0,621 & 0,721 & 0,806 \\
+$\Delta t_5$ (s) & 0,362 & 0,512 & 0,624 & 0,718 & 0,804 \\
 \midrule
-\textbf{Tempo médio (s)} & - & - & - & - & - \\
-\textbf{Erro aleatório (s)} & - & - & - & - & - \\
-\textbf{Erro absoluto $u_c(t)$ (s)} & - & - & - & - & - \\
+\textbf{Tempo médio (s)} & 0,364 & 0,509 & 0,623 & 0,719 & 0,806 \\
+\textbf{Erro aleatório (s)} & 0,001 & 0,001 & 0,001 & 0,001 & 0,001 \\
+\textbf{Erro absoluto $u_c(t)$ (s)} & 0,002 & 0,002 & 0,002 & 0,002 & 0,002 \\
 \midrule
-\textbf{Velocidade Média (cm/s)} & - & - & - & - & - \\
-\textbf{Velocidade Absoluta (cm/s)} & - & - & - & - & - \\
-\textbf{Aceleração (cm/s$^2$)} & - & - & - & - & - \\
+\textbf{Vel. Média $\bar{v}_k$ (cm/s)} & $27,473 \pm 0,288$ & $39,293 \pm 0,253$ & $48,154 \pm 0,235$ & $55,633 \pm 0,224$ & $62,035 \pm 0,216$ \\
+\textbf{Vel. Inst. $v_{\text{inst}}$ (cm/s)} & $54,946 \pm 0,577$ & $78,586 \pm 0,505$ & $96,308 \pm 0,470$ & $111,266 \pm 0,449$ & $124,070 \pm 0,432$ \\
+% O erro crítico estava aqui (o ^2 fora do ambiente matemático). Foi corrigido para o pacote textsuperscript
+\textbf{Aceleração $a_k$ (cm/s\textsuperscript{2})} & $150,948 \pm 1,517$ & $154,392 \pm 1,385$ & $154,588 \pm 1,324$ & $154,751 \pm 0,995$ & $153,932 \pm 0,551$ \\
 \bottomrule
 \end{tabular}%
 }
 \end{table}
 
-\subsection{Demonstração da Propagação de Incertezas}
-% TODO: Inserir a demonstração dos cálculos de incerteza aqui.
+\subsection{Demonstração Analítica e Erros Experimentais}
+As grandezas cinemáticas foram determinadas com base nas equações fundamentais. A velocidade média ($\bar{v}_k$), a velocidade instantânea ($v_{\text{inst},k}$) e a aceleração ($a_k$) obedecem a:
+\begin{equation}
+    \bar{v}_k = \frac{\Delta x_k}{\Delta \bar{t}_k}, \quad v_{\text{inst},k} = 2 \cdot \bar{v}_k, \quad a_k = \frac{2 \cdot \Delta x_k}{\left(\Delta \bar{t}_k\right)^2}
+\end{equation}
+
+As incertezas propagadas para a velocidade média ($\sigma\bar{v}$) e velocidade instantânea ($\sigma v_{\text{inst}}$) foram calculadas por:
+\begin{equation}
+    \sigma\bar{v}_k = \bar{v}_k \cdot \sqrt{\left(\frac{\sigma x}{\Delta x_k}\right)^2 + \left(\frac{\sigma t}{\Delta \bar{t}_k}\right)^2}, \quad \sigma v_{\text{inst},k} = 2 \cdot \sigma\bar{v}_k
+\end{equation}
+
+Para a incerteza da aceleração ($\sigma a$), definiu-se $A = 2\Delta x$ e $B = \Delta t^2$, adotando a equação:
+\begin{equation}
+    \sigma a_k = \frac{A}{B} \cdot \sqrt{\frac{A \cdot \sigma B + B \cdot \sigma A}{B^2}}
+\end{equation}
+
+Assumindo $\sigma x = 0,05\text{ cm}$ (logo $\sigma A = 0,10\text{ cm}$) e utilizando os erros do tempo e do tempo ao quadrado ($\sigma B$) detalhados na Tabela 1, demonstram-se os cálculos para todos os intervalos:
+
+\vspace{0.3cm}
+\noindent \textbf{Intervalo 1 ($10\text{ cm}$, $\Delta \bar{t}_1 = 0,364\text{ s}$, $\sigma t_1 = 0,002\text{ s}$, $\sigma B_1 = 0,001\text{ s}^2$):}
+\begin{align*}
+    \bar{v}_{1} &= \frac{10}{0,364} \approx 27,473\text{ cm/s} \\
+    \sigma\bar{v}_{1} &= 27,473 \cdot \sqrt{\left(\frac{0,05}{10}\right)^2 + \left(\frac{0,002}{0,364}\right)^2} \approx 0,288\text{ cm/s} \\
+    v_{inst1} &= 2 \cdot 27,473 = 54,946\text{ cm/s} \quad \Rightarrow \quad \sigma v_{inst1} = 2 \cdot 0,288 = 0,577\text{ cm/s} \\
+    a_1 &= \frac{2 \cdot 10}{(0,364)^2} = \frac{20}{0,132496} \approx 150,948\text{ cm/s}^2 \\
+    \sigma a_1 &= 150,948 \cdot \sqrt{\frac{(20 \cdot 0,001) + (0,132496 \cdot 0,10)}{(0,132496)^2}} \approx 1,517\text{ cm/s}^2
+\end{align*}
+
+\noindent \textbf{Intervalo 2 ($20\text{ cm}$, $\Delta \bar{t}_2 = 0,509\text{ s}$, $\sigma t_2 = 0,002\text{ s}$, $\sigma B_2 = 0,002\text{ s}^2$):}
+\begin{align*}
+    \bar{v}_{2} &= 39,293\text{ cm/s} \quad &\sigma\bar{v}_{2} &\approx 0,253\text{ cm/s} \\
+    v_{inst2} &= 78,586\text{ cm/s} \quad &\sigma v_{inst2} &\approx 0,505\text{ cm/s} \\
+    a_2 &= 154,392\text{ cm/s}^2 \quad &\sigma a_2 &= 154,392 \cdot \sqrt{\frac{(40 \cdot 0,002) + (0,259 \cdot 0,10)}{(0,259)^2}} \approx 1,385\text{ cm/s}^2
+\end{align*}
+
+\noindent \textbf{Intervalo 3 ($30\text{ cm}$, $\Delta \bar{t}_3 = 0,623\text{ s}$, $\sigma t_3 = 0,002\text{ s}$, $\sigma B_3 = 0,003\text{ s}^2$):}
+\begin{align*}
+    \bar{v}_{3} &= 48,154\text{ cm/s} \quad &\sigma\bar{v}_{3} &\approx 0,235\text{ cm/s} \\
+    v_{inst3} &= 96,308\text{ cm/s} \quad &\sigma v_{inst3} &\approx 0,470\text{ cm/s} \\
+    a_3 &= 154,588\text{ cm/s}^2 \quad &\sigma a_3 &= 154,588 \cdot \sqrt{\frac{(60 \cdot 0,003) + (0,388 \cdot 0,10)}{(0,388)^2}} \approx 1,324\text{ cm/s}^2
+\end{align*}
+
+\noindent \textbf{Intervalo 4 ($40\text{ cm}$, $\Delta \bar{t}_4 = 0,719\text{ s}$, $\sigma t_4 = 0,002\text{ s}$, $\sigma B_4 = 0,003\text{ s}^2$):}
+\begin{align*}
+    \bar{v}_{4} &= 55,633\text{ cm/s} \quad &\sigma\bar{v}_{4} &\approx 0,224\text{ cm/s} \\
+    v_{inst4} &= 111,266\text{ cm/s} \quad &\sigma v_{inst4} &\approx 0,449\text{ cm/s} \\
+    a_4 &= 154,751\text{ cm/s}^2 \quad &\sigma a_4 &= 154,751 \cdot \sqrt{\frac{(80 \cdot 0,003) + (0,517 \cdot 0,10)}{(0,517)^2}} \approx 0,995\text{ cm/s}^2
+\end{align*}
+
+\noindent \textbf{Intervalo 5 ($50\text{ cm}$, $\Delta \bar{t}_5 = 0,806\text{ s}$, $\sigma t_5 = 0,002\text{ s}$, $\sigma B_5 = 0,002\text{ s}^2$):}
+\begin{align*}
+    \bar{v}_{5} &= 62,035\text{ cm/s} \quad &\sigma\bar{v}_{5} &\approx 0,216\text{ cm/s} \\
+    v_{inst5} &= 124,070\text{ cm/s} \quad &\sigma v_{inst5} &\approx 0,432\text{ cm/s} \\
+    a_5 &= 153,932\text{ cm/s}^2 \quad &\sigma a_5 &= 153,932 \cdot \sqrt{\frac{(100 \cdot 0,002) + (0,650 \cdot 0,10)}{(0,650)^2}} \approx 0,551\text{ cm/s}^2
+\end{align*}
+
+\subsection{Análise Gráfica}
+Para relacionar os coeficientes computacionais obtidos com o seu significado físico, efetuaram-se três análises gráficas.
+
+% ---------------- GRÁFICO 1 ----------------
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Testes(1).pdf}
+    \caption{Parábola de regressão quadrática da posição pelo tempo.}
+\end{figure}
+A regressão de $x \times t$ gerou uma curva parabólica. Fisicamente, a equação horária dita que $x(t) = \frac{a}{2}t^2$. O parâmetro associado ao termo quadrático no ajuste resultou em $a \approx 154,25\text{ cm/s}^2$. 
+
+% ---------------- GRÁFICO 2 ----------------
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Testes(2).pdf}
+    \caption{Gráfico de linearização das abscissas ao quadrado.}
+\end{figure}
+Ao construir o gráfico de $x \times t^2$, os pontos alinharam-se perfeitamente numa reta. O significado do coeficiente angular desta regressão linear representa a metade da aceleração do sistema ($a/2$). O declive extraído aponta para uma aceleração de $a \approx 154,17\text{ cm/s}^2$.
+
+% ---------------- GRÁFICO 3 ----------------
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\textwidth]{Testes(3).pdf}
+    \caption{Regressão linear das velocidades instantâneas no eixo das ordenadas.}
+\end{figure}
+O gráfico $v \times t$ com as velocidades instantâneas resultou numa reta linear crescente. O significado físico do coeficiente angular neste diagrama é o valor direto da aceleração ($a$). A regressão indicou o valor de $a \approx 154,14\text{ cm/s}^2$.
 
 
 % ==========================================
 % 4. CONCLUSÃO
 % ==========================================
 \section{Conclusão}
-% TODO: Redigir a conclusão final após a inserção e análise completa dos dados e gráficos.
+Este ensaio permitiu validar com rigor as leis cinemáticas do Movimento Retilíneo Uniformemente Variado através de dados coletados no Sistema CGS. A utilização do trilho de ar foi eficaz em tornar o atrito desprezível, evidenciado pela elevada constância da aceleração sob a tração da massa gravitacional.
+
+De acordo com as regressões efetuadas nos três gráficos trabalhados neste experimento, os resultados convergiram de forma altamente precisa: a análise $x \times t$ indicou $a = 154,25\text{ cm/s}^2$; a linearização em $x \times t^2$ indicou $a = 154,17\text{ cm/s}^2$; e a inclinação da reta das velocidades $v \times t$ aferiu $a = 154,14\text{ cm/s}^2$. Esta discrepância inferior a $0,15\text{ cm/s}^2$ comprova a solidez do método.
+
+Com os coeficientes estatísticos apurados, conclui-se o relatório transcrevendo as equações horárias finais que descreveram fisicamente a posição e a velocidade deste móvel durante as aferições:
+\begin{equation}
+    x(t) = \left(77,13 \text{ cm/s}^2\right) \cdot t^2
+\end{equation}
+\begin{equation}
+    v(t) = \left(154,25 \text{ cm/s}^2\right) \cdot t
+\end{equation}
 
 % ==========================================
 % REFERÊNCIAS
 % ==========================================
 \section*{Referências}
 \begin{enumerate}
-    \item SANTOS, Wytler C. \textbf{Roteiro para o Experimento III - Movimento Retilíneo Uniformemente Variado (MRUV)}. Faculdade UnB Gama.
+    \item SANTOS, Wytler C. \textbf{Roteiro para o Experimento III - Movimento Retilíneo Uniformemente Variado (MRUV)}. Universidade de Brasília - Física 1 Experimental.
 \end{enumerate}
 
 \end{document}
